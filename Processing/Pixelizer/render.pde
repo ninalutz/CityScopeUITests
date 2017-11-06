@@ -609,7 +609,7 @@ void renderBasemap(PGraphics graphic) {
               histogram[j]/histogramMax*histogramHeight);
           }
 
-      i.translate(-2* STANDARD_MARGIN - w,+2.0/3*TABLE_IMAGE_HEIGHT - 70);
+      i.translate(0,-100);
 
         // Draw Scale
         int scale_0 = 10;
@@ -666,19 +666,6 @@ void renderBasemap(PGraphics graphic) {
           }
         }
 
-      i.translate(0, +4*scalePix);
-
-      i.translate(0, -(STANDARD_MARGIN + TABLE_IMAGE_HEIGHT));
-
-      i.fill(textColor);
-      i.textAlign(RIGHT);
-      i.text("Pixelizer v1.0", screen.width - 10, screen.height - STANDARD_MARGIN - 15);
-      i.text("Ira Winder, jiw@mit.edu", screen.width - 10, screen.height - STANDARD_MARGIN);
-      i.fill(textColor);
-
-
-
-
       i.textAlign(LEFT);
       String suffix = "";
       String prefix = "";
@@ -690,15 +677,11 @@ void renderBasemap(PGraphics graphic) {
         suffix = " seconds";
       }
       
-      //w*gridPanU/gridU, h*gridPanV/gridV
-
-      i.translate(TABLE_IMAGE_OFFSET - STANDARD_MARGIN - w, h*gridPanV/gridV + 50);
-
       // Main Info
       i.fill(wmt_yellow);
-      i.text(fileName.toUpperCase(), 0, 0);
+      i.text(fileName.toUpperCase(), 0, -270);
       i.fill(textColor);
-      i.text("Last Mile Network Design", -STANDARD_MARGIN*4, 15);
+      i.text("Last Mile Network Design", 0, -250);
 
       if (showFrameRate) {
         i.text("FrameRate: " + frameRate, 0, 45);
@@ -926,3 +909,12 @@ void renderBasemap(PGraphics graphic) {
     legendI.beginDraw();
 
   }
+  
+ void drawCredit(){
+      fill(textColor);
+      textAlign(RIGHT);
+      text("Pixelizer v1.0", screen.width - 10, screen.height - STANDARD_MARGIN - 15);
+      text("Ira Winder, jiw@mit.edu", screen.width - 10, screen.height - STANDARD_MARGIN);
+      fill(textColor);
+
+ }
