@@ -693,8 +693,10 @@ void renderBasemap(PGraphics graphic) {
       }  else if ( valueMode.equals("doorstep") ) {
         suffix = " seconds";
       }
+      
+      //w*gridPanU/gridU, h*gridPanV/gridV
 
-      i.translate(TABLE_IMAGE_OFFSET - STANDARD_MARGIN - w, 2*STANDARD_MARGIN + h + 10);
+      i.translate(TABLE_IMAGE_OFFSET - STANDARD_MARGIN - w, h*gridPanV/gridV + 50);
 
       // Main Info
       i.fill(wmt_yellow);
@@ -708,67 +710,13 @@ void renderBasemap(PGraphics graphic) {
       
       // Grid INFO Summary Values
       i.translate(0, 80);
-      i.fill(wmt_dark_green);
-      i.text("GRID INFO", 0, 0);
-      i.fill(textColor);
-      i.text("2015 Delivery Data:", 0, 20);
-      i.text("Population Value:", 0, 50);
-      i.text("Demand Potential:", 0, 80);
-      i.text("Cost Per Delivery:", 0, 110);
-      i.text("Total Delivery Cost:", 0, 140);
-        
       i.colorMode(RGB);
       i.fill(0,255,255);
       
       // Empirical 2015 Delivery Values
       String value = "";
-      value = "";
-      if ((int)getCellValue(mouseToU(), mouseToV()) == -1) {
-        value = "NO_DATA";
-      } else {
-        value += (int)getCellValue(mouseToU(), mouseToV());
-      }
-      i.text(prefix + value + suffix, 0, 35);
-      
-      // Population Figures
-      value = "";
-      if ((int)getCellPop(mouseToU(), mouseToV()) == -1) {
-        value = "NO_DATA";
-      } else {
-        value += (int)getCellPop(mouseToU(), mouseToV());
-      }
-      i.text(value + " " + popMode, 0, 65);
-      
-      // Daily Demand Estimate based on population
-      value = "";
-      if ((int)getCellPop(mouseToU(), mouseToV()) == -1) {
-        value = "NO_DATA";
-        i.text(value, 0, 95);
-      } else {
-        value += dailyDemand(getCellPop(mouseToU(), mouseToV()));
-        i.text(int(float(value)*10.0)/10.0, 0, 95);
-      }
 
-      // Output: Delivery Cost
-      value = "";
-      if ((getCellDeliveryCost(mouseToU(), mouseToV()) == -1) ||
-          getCellDeliveryCost(mouseToU(), mouseToV())==Float.POSITIVE_INFINITY) {
-        value = "NO_DATA";
-        i.text(value, 0, 125);
-      } else {
-        value += getCellDeliveryCost(mouseToU(), mouseToV());
-        i.text(int(float(value)*10.0)/10.0, 0, 125);
-      }
 
-      // Output: Total Cost
-      value = "";
-      if (getCellTotalCost(mouseToU(), mouseToV()) == -1) {
-        value = "NO_DATA";
-        i.text(value, 0, 155);
-      } else {
-        value += getCellTotalCost(mouseToU(), mouseToV());
-        i.text(int(float(value)*10.0)/10.0, 0, 155);
-      }
 
       i.endDraw();
 
@@ -776,10 +724,10 @@ void renderBasemap(PGraphics graphic) {
       // Draw MiniMap
       i.beginDraw();
       i.translate(TABLE_IMAGE_OFFSET - STANDARD_MARGIN - w, y_0);
-      i.image(miniMap, 0, 0, w, h);
-      i.noFill();
-      i.stroke(textColor);
-      i.rect(w*gridPanU/gridU, h*gridPanV/gridV, w*(0.5*gridSize), h*(0.5*gridSize));
+      //i.image(miniMap, 0, 0, w, h);
+//      i.noFill();
+//      i.stroke(textColor);
+//      i.rect(w*gridPanU/gridU, h*gridPanV/gridV, w*(0.5*gridSize), h*(0.5*gridSize));
 
       i.endDraw();
     }

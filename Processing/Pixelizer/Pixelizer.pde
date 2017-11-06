@@ -14,6 +14,7 @@
  * Ira Winder (jiw@mit.edu)
  * Mike Winder (mhwinder@gmail.com)
  * Write Date: January, 2015
+ Rewritten for UI Test suite Nina Lutz
  *
  */
 
