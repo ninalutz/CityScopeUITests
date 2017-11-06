@@ -553,7 +553,8 @@ void renderBasemap(PGraphics graphic) {
       i.strokeWeight(1);
       i.rect(TABLE_IMAGE_OFFSET, STANDARD_MARGIN, TABLE_IMAGE_WIDTH, TABLE_IMAGE_HEIGHT);
 
-      i.translate(TABLE_IMAGE_OFFSET + TABLE_IMAGE_WIDTH + STANDARD_MARGIN, STANDARD_MARGIN + TABLE_IMAGE_HEIGHT );
+    //  i.translate(TABLE_IMAGE_OFFSET + TABLE_IMAGE_WIDTH + STANDARD_MARGIN, STANDARD_MARGIN + TABLE_IMAGE_HEIGHT );
+     i.translate(STANDARD_MARGIN*11, STANDARD_MARGIN + TABLE_IMAGE_HEIGHT );
 
         // Draw Total Demand Potential
         i.fill(#666666);
@@ -585,13 +586,13 @@ void renderBasemap(PGraphics graphic) {
         
         float average = sumTotalCost/demandSupplied;
         i.fill(#FFFF00);
-        i.text("Average Cost: " + int(average*100)/100.0 + " per delivery", 0, -2.0/3*TABLE_IMAGE_HEIGHT);
+        i.text("Average Cost: " + int(average*100)/100.0 + " per delivery", 0, -2.0/3*TABLE_IMAGE_HEIGHT + 100);        
         i.fill(textColor);
         
         //Histogram
         int histogramHeight = 120;
         int histogramWidth = 8*STANDARD_MARGIN;
-        i.translate(0, -2.0/3*TABLE_IMAGE_HEIGHT - 30);
+        i.translate(0, -2.0/3*TABLE_IMAGE_HEIGHT - 30 + 100);
           i.line(0, 0, histogramWidth, 0);
 
           // Average Indicator
@@ -607,15 +608,10 @@ void renderBasemap(PGraphics graphic) {
               float(histogramWidth)/histogram.length,
               histogram[j]/histogramMax*histogramHeight);
           }
-        i.translate(0, +2.0/3*TABLE_IMAGE_HEIGHT + 30);
 
-      i.translate(-(TABLE_IMAGE_OFFSET + TABLE_IMAGE_WIDTH + STANDARD_MARGIN), -(STANDARD_MARGIN + TABLE_IMAGE_HEIGHT));
-
-
-      i.translate(TABLE_IMAGE_OFFSET - STANDARD_MARGIN - w, STANDARD_MARGIN + TABLE_IMAGE_HEIGHT);
+      i.translate(-2* STANDARD_MARGIN - w,+2.0/3*TABLE_IMAGE_HEIGHT - 70);
 
         // Draw Scale
-
         int scale_0 = 10;
         int scale_1 = int(w + STANDARD_MARGIN);
         i.translate(-scale_0, 0);
@@ -672,7 +668,7 @@ void renderBasemap(PGraphics graphic) {
 
       i.translate(0, +4*scalePix);
 
-      i.translate(-(TABLE_IMAGE_OFFSET - STANDARD_MARGIN - w), -(STANDARD_MARGIN + TABLE_IMAGE_HEIGHT));
+      i.translate(0, -(STANDARD_MARGIN + TABLE_IMAGE_HEIGHT));
 
       i.fill(textColor);
       i.textAlign(RIGHT);
@@ -702,7 +698,7 @@ void renderBasemap(PGraphics graphic) {
       i.fill(wmt_yellow);
       i.text(fileName.toUpperCase(), 0, 0);
       i.fill(textColor);
-      i.text("Last Mile Network Design", 0, 15);
+      i.text("Last Mile Network Design", -STANDARD_MARGIN*4, 15);
 
       if (showFrameRate) {
         i.text("FrameRate: " + frameRate, 0, 45);
