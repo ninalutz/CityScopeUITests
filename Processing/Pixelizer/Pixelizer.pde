@@ -181,17 +181,15 @@ void draw() {
   projector = get(TABLE_IMAGE_OFFSET, STANDARD_MARGIN, TABLE_IMAGE_WIDTH, TABLE_IMAGE_HEIGHT);
   margin = get(TABLE_IMAGE_OFFSET - STANDARD_MARGIN - int(mapRatio*TABLE_IMAGE_HEIGHT), STANDARD_MARGIN, int(mapRatio*TABLE_IMAGE_HEIGHT) + STANDARD_MARGIN, TABLE_IMAGE_HEIGHT);
   margin.resize(int(mapRatio*TABLE_IMAGE_HEIGHT), margin.height);
-  hist = get(TABLE_IMAGE_OFFSET + TABLE_IMAGE_WIDTH, STANDARD_MARGIN, 250, 350);
-  demandGraph = get(TABLE_IMAGE_OFFSET + TABLE_IMAGE_WIDTH, STANDARD_MARGIN + TABLE_IMAGE_HEIGHT/2 , 2*STANDARD_MARGIN, TABLE_IMAGE_HEIGHT/2-STANDARD_MARGIN);
-  hist.resize(margin.width, 350);
+  side = get(int(10*STANDARD_MARGIN), STANDARD_MARGIN, TABLE_IMAGE_OFFSET - int(7*STANDARD_MARGIN), TABLE_IMAGE_HEIGHT);
+  side.resize(int(10*STANDARD_MARGIN), TABLE_IMAGE_HEIGHT-10);
 
   // In Lieu of Projection creates the square table on main canvas for testing when on mac
   if (systemOS.equals("Mac") && testProjectorOnMac) {
     background(textColor);
     image(margin, 0, 0);
     image(projector, margin.width, 0);
-    image(hist, 0, 345);
-    image(demandGraph, 0, 345 + hist.height);
+    image(side, 0, 0);
   }
 
   fill(textColor, 80);

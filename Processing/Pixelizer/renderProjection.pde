@@ -36,7 +36,7 @@ Keystone ks;
 // defines various drawing surfaces, all pre-calibrated, to project
 CornerPinSurface surface;
 PGraphics offscreen;
-PImage projector, margin, hist, demandGraph;
+PImage projector, margin, side;
 
 // New Application Window Parameters
 PFrame proj2D = null; // f defines window to open new applet in
@@ -130,10 +130,10 @@ public class projApplet extends PApplet {
     // Draw the scene, offscreen
     p.beginDraw();
     p.clear();
-    p.image(margin, 0, 0);
-    p.image(projector, margin.width, 0);
-  //  p.image(hist, 0, 358);
-    p.image(demandGraph, 0, 358 + hist.height);
+    //p.image(margin, 0, 0);
+    p.image(side, 0, 0);
+    p.image(projector,margin.width, 0);
+//    p.image(demandGraph, 0, 358 + hist.height);
     p.endDraw();
   }
   
