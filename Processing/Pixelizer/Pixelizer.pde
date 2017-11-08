@@ -125,7 +125,7 @@ void setup() {
 
   // Initializes Pieces with Random Placement
   fauxPieces(randomType, tablePieceInput, IDMax);
-
+  
   // Renders Minimap
   reRenderMiniMap(miniMap);
 

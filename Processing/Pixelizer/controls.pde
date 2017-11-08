@@ -164,7 +164,7 @@ void loadMenu(int screenWidth, int screenHeight) {
 int tempID = 0;
 // The result of each button click is defined here
 void mouseClicked() {
-
+  Piece(mouseX, mouseY);
 //  // manually place a store
 //  int x, y;
 //  
@@ -353,17 +353,19 @@ void mouseClicked() {
   reRender();
 }
 
+
 void keyPressed() {
   
   boolean switched = false;
   boolean projectorMoved = false;
   
   switch(key) {
-    case 'h': // "Hide Main Menu (h)"     // 0
-      toggleMainMenu();
+    
+    case 'z': //  "Randomize Pieces (z)"    // 22
+      toggleRandomPieces();
       switched = true;
       break;
-
+      
     case 'n': // "Next City (n)"          // 0
       nextModeIndex();
       switched = true;
@@ -453,10 +455,6 @@ void keyPressed() {
       break;
     case '`': //  "Enable Projection (`)"   // 21
       toggleProjection(getButtonIndex(buttonNames[21]));
-      switched = true;
-      break;
-    case 'z': //  "Randomize Pieces (z)"    // 22
-      toggleRandomPieces();
       switched = true;
       break;
     case 'I': //  "Show Input Data (I)",    // 23
@@ -799,6 +797,7 @@ void toggleRandomPieces() {
   changeDetected = true;
   println("randomType = " + randomType);
 }
+
 
 void toggleDeliveryData(int button) {
   showDeliveryData = toggle(showDeliveryData);
