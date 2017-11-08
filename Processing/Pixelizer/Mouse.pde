@@ -1,3 +1,4 @@
-void Piece(float x, float y){
-  
+PVector Piece(){
+  println(mouseToU(),mouseToV());
+  return new PVector(mouseToU(),mouseToV());
 }
