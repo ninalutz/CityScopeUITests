@@ -244,13 +244,22 @@ void setupPieces() {
   inputForm.add(form_15);
 }
 
+Table decodeOutTable;
 void decodePieces() {
-  
+  decodeOutTable = new Table();
+  decodeOutTable.addColumn("u");
+  decodeOutTable.addColumn("v");
+  decodeOutTable.addColumn("id");
   clearInputData();
   
   for (int i=0; i<tablePieceInput.length; i++) {
     for (int j=0; j<tablePieceInput[0].length; j++) {
       int ID = tablePieceInput[i][j][0];
+      TableRow newRow = decodeOutTable.addRow();
+      newRow.setInt("u",i);
+      newRow.setInt("v", j);
+      newRow.setInt("id", ID);
+      
       if (ID >= 0 && ID <= IDMax) {
         
         // Rotation Parameters
@@ -310,6 +319,8 @@ void decodePieces() {
       }
     }
   }
+  String tableName = "Decode" + str(hour()) + ":" + str(minute()) + ":" + str(second()) + " " + frameCount;
+   saveTable(decodeOutTable, "data/" + tableName + ".csv");
 }
 
 void clearInputData() {
