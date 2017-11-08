@@ -164,7 +164,7 @@ void loadMenu(int screenWidth, int screenHeight) {
 int tempID = 0;
 // The result of each button click is defined here
 void mouseClicked() {
-  Piece();
+  mouseAct();
 //  // manually place a store
 //  int x, y;
 //  

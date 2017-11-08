@@ -341,7 +341,8 @@ void fauxPieces(int code, int[][][] pieces, int maxID) {
         pieces[i][j][1] = 0;
       }
     }
-  } else if (code == 0 ) {
+  } 
+  else if (code == 0) {
     println(pieces.length);
     println(pieces[0].length);
     pieces[0][0][0] = 1;
