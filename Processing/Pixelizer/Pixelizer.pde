@@ -8,7 +8,7 @@
  *     |
  *     |
  *     |
- *     |
+ *     | 
  *   + V-Axis
  *
  * Ira Winder (jiw@mit.edu)
